@@ -5,13 +5,37 @@ const Initiatives: CollectionConfig = {
     admin: {
         useAsTitle: 'name',
     },
+    upload: true,
     fields: [
         {
             name: 'name',
             type: 'text'
+        },
+        {
+            name: 'description',
+            type: 'textarea'
+        },
+        {
+            name: 'location',
+            type: 'relationship',
+            relationTo: 'districts',
+            hasMany: false
+        },
+        {
+            name: 'website',
+            type: 'text'
+        },
+        {
+            name: 'tags',
+            type: 'relationship',
+            relationTo: 'tags',
+            hasMany: true
+        },
+        {
+            name: 'logo',
+            type: 'upload',
+            relationTo: "initiatives"
         }
-        // Email added by default
-        // Add more fields as needed
     ],
 }
 

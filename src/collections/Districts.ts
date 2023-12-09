@@ -9,9 +9,17 @@ const Districts: CollectionConfig = {
         {
             name: 'name',
             type: 'text'
+        },
+        {
+            name: 'description',
+            type: 'textarea'
+        },
+        {
+            name: 'tags',
+            type: 'relationship',
+            relationTo: 'tags',
+            hasMany: true
         }
-        // Email added by default
-        // Add more fields as needed
     ],
 }
 

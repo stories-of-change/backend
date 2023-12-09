@@ -9,10 +9,37 @@ const Organizations: CollectionConfig = {
         {
             name: 'name',
             type: 'text'
+        },
+        {
+            name: 'description',
+            type: 'textarea'
+        },
+        {
+            name: 'location',
+            type: 'relationship',
+            relationTo: 'districts',
+            hasMany: false
+        },
+        {
+            name: 'basedIn',
+            type: 'text'
+        },
+        {
+            name: 'website',
+            type: 'text'
+        },
+        {
+            name: 'tags',
+            type: 'relationship',
+            relationTo: 'tags',
+            hasMany: true
         }
-        // Email added by default
-        // Add more fields as needed
     ],
+    upload: {
+        staticURL: '/media',
+        staticDir: 'media',
+        mimeTypes: ['image/*'],
+    },
 }
 
 export default Organizations
