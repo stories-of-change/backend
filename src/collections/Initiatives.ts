@@ -2,6 +2,9 @@ import { CollectionConfig } from 'payload/types'
 
 const Initiatives: CollectionConfig = {
     slug: 'initiatives',
+    access: {
+        read: ({ req: { user } }) => { return true },
+    },
     admin: {
         useAsTitle: 'name',
     },

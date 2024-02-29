@@ -1,7 +1,12 @@
 import { CollectionConfig } from 'payload/types'
+import { isInMaintenance } from '../utils/isInMaintenance'
 
 const Organizations: CollectionConfig = {
     slug: 'organizations',
+    access: {
+        create: isInMaintenance,
+        read: () => true,
+    },
     admin: {
         useAsTitle: 'name',
     },

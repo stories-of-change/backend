@@ -1,14 +1,20 @@
 import { CollectionConfig } from 'payload/types'
+import { isInMaintenance } from '../utils/isInMaintenance'
 import Tags from './Tags'
+import { afterChangingStories } from '../hooks/afterChangingStories'
 
 const Stories: CollectionConfig = {
     slug: 'stories',
+    access: {
+        create: isInMaintenance,
+        read: () => true,
+    },
     admin: {
         useAsTitle: 'name',
     },
     fields: [
         {
-            name: 'name',
+            name: 'title',
             type: 'text'
         },
         {
@@ -37,13 +43,16 @@ const Stories: CollectionConfig = {
             relationTo: 'initiatives',
             hasMany: true
         },
-        {
+        { // this needs to change into a sort of list kinda
             name: 'tags',
             type: 'relationship',
             relationTo: 'tags',
             hasMany: true
         }
     ],
+    hooks: {
+        afterChange: [afterChangingStories],
+    }
 }
 
 export default Stories
